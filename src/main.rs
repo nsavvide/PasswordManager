@@ -1,3 +1,6 @@
+mod password;
+use password::Password;
+
 fn main() {
-    println!("Hello, world!");
+    
 }

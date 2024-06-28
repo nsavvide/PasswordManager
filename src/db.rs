@@ -51,16 +51,16 @@ impl Database {
         items
     }
 
-    pub fn insert(&self, password: Password) {
+    pub fn insert(&self, password: &Password) {
         self.conn.execute("INSERT INTO PASSWORDS (title, username, password) VALUES (?1, ?2, ?3)", 
-        !params![password.title, password.username, password.password]).unwrap();
+        params![password.title, password.username, password.password]).unwrap();
     }
 
     pub fn delete(&self, id: usize) {
         self.conn.execute("DELETE FROM PASSWORDS WHERE id=?1", params![id]).unwrap();
     }
 
-    pub fn update(&self, id: usize, password: Password) {
+    pub fn update(&self, id: usize, password: &Password) {
         self.conn.execute("UPDATE PASSWORDS SET title=?1, username=?2, password=?3 WHERE id=?4", params![password.title, password.username, password.password, id])
         .unwrap();
     }
